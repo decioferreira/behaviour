@@ -26,3 +26,17 @@ Feature: Sign in
     When I access the sign in page
     Then I should be redirected to the homepage
     And I should see an already authenticated message
+
+  Scenario: Remember me
+    Given I am a registered user
+    When I sign in with remember me option checked
+    And I close the browser
+    And I access a page with restricted access
+    Then I should be signed in
+
+  Scenario: Forget me
+    Given I am a registered user
+    When I sign in with remember me option unchecked
+    And I close the browser
+    And I access a page with restricted access
+    Then I should be signed out

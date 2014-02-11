@@ -20,6 +20,11 @@ Gem::Specification.new do |spec|
 
   spec.add_runtime_dependency "rails"
 
+  spec.add_runtime_dependency "rspec-rails", "~> 3.0.0.beta"
+  spec.add_runtime_dependency "cucumber-rails"
+  spec.add_runtime_dependency "database_cleaner"
+  spec.add_runtime_dependency "show_me_the_cookies"
+
   spec.add_development_dependency "ammeter"
   spec.add_development_dependency "bundler", "~> 1.5"
   spec.add_development_dependency "rake"

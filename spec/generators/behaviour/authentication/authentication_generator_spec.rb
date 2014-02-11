@@ -13,28 +13,6 @@ describe Behaviour::Generators::AuthenticationGenerator do
   describe "no arguments" do
     before { run_generator }
 
-    describe "Gemfile" do
-      subject { file("Gemfile") }
-
-      it {
-        expect(subject).to contain <<-GROUP
-group :development, :test do
-  gem "rspec-rails", "~> 3.0.0.beta"
-  gem "rack_session_access"
-end
-        GROUP
-      }
-
-      it {
-        expect(subject).to contain <<-GROUP
-group :test do
-  gem "cucumber-rails", require: false
-  gem "database_cleaner"
-end
-        GROUP
-      }
-    end
-
     describe "features" do
       it { expect(file("features/authentication/reset_password.feature")).to exist }
       it { expect(file("features/authentication/sign_in.feature")).to exist }
@@ -46,8 +24,8 @@ end
 
       it { expect(file("features/support/authentication.rb")).to exist }
       it { expect(file("features/support/i18n.rb")).to exist }
-      it { expect(file("features/support/rack_session_access.rb")).to exist }
       it { expect(file("features/support/rspec_syntax.rb")).to exist }
+      it { expect(file("features/support/show_me_the_cookies.rb")).to exist }
     end
 
     describe "specs" do

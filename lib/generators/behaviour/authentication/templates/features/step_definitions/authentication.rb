@@ -42,12 +42,12 @@ Then(/^I should see a successful password reset message$/) do
 end
 
 Then(/^I should be signed in$/) do
-  expect { page.get_rack_session_key("user_id") }.not_to raise_error
+  step "I access a page with restricted access"
+  expect(current_path).to eq(restricted_access_path)
 end
 
 When(/^I access a page with restricted access$/) do
-  # FIXME: change to a restricted path of your application
-  visit "/restricted"
+  visit restricted_access_path
 end
 
 Then(/^I should be redirected to the sign in page$/) do
@@ -81,7 +81,10 @@ Then(/^I should see an invalid email message$/) do
 end
 
 Then(/^I should be signed out$/) do
-  expect { page.get_rack_session_key("user_id") }.to raise_error(KeyError)
+  steps %Q{
+    When I access a page with restricted access
+    Then I should be redirected to the sign in page
+  }
 end
 
 When(/^I try to sign in with a wrong password$/) do
@@ -112,6 +115,26 @@ end
 
 Then(/^I should see an already authenticated message$/) do
   expect(page).to have_selector("#alert-message", text: I18n.t("authentication.alert.already_authenticated"))
+end
+
+When(/^I sign in with remember me option checked$/) do
+  visit "/sign_in"
+  fill_in I18n.t("authentication.sign_in.email"), with: user.email
+  fill_in I18n.t("authentication.sign_in.password"), with: user.password
+  check I18n.t("authentication.sign_in.remember_me")
+  click_button I18n.t("authentication.sign_in.submit")
+end
+
+When(/^I close the browser$/) do
+  expire_cookies
+end
+
+When(/^I sign in with remember me option unchecked$/) do
+  visit "/sign_in"
+  fill_in I18n.t("authentication.sign_in.email"), with: user.email
+  fill_in I18n.t("authentication.sign_in.password"), with: user.password
+  uncheck I18n.t("authentication.sign_in.remember_me")
+  click_button I18n.t("authentication.sign_in.submit")
 end
 
 When(/^I sign out$/) do

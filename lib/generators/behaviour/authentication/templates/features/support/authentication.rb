@@ -1,4 +1,9 @@
 module Authentication
+  def restricted_access_path
+    # FIXME: change to a restricted path of your application
+    "/restricted"
+  end
+
   def user
     OpenStruct.new(
       email: "user@email.com",
