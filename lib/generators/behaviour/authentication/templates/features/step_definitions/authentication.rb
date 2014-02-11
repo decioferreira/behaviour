@@ -46,6 +46,7 @@ Then(/^I should be signed in$/) do
 end
 
 When(/^I access a page with restricted access$/) do
+  # FIXME: change to a restricted path of your application
   visit "/restricted"
 end
 
@@ -114,7 +115,7 @@ Then(/^I should see an already authenticated message$/) do
 end
 
 When(/^I sign out$/) do
-  visit "/" unless page.has_button?("Sign out")
+  visit "/" unless page.has_button?(I18n.t("authentication.sign_out.submit"))
   click_button I18n.t("authentication.sign_out.submit")
 end
 
@@ -143,8 +144,7 @@ Then(/^I should see an already authenticated, sign out an try again message$/) d
 end
 
 Given(/^I am signed out$/) do
-  visit "/" unless page.has_button?(I18n.t("authentication.action.sign_out"))
-  click_button I18n.t("authentication.action.sign_out")
+  step "I sign out"
 end
 
 Then(/^I should see an already registered message$/) do
@@ -180,5 +180,4 @@ When(/^I sign in with the new password$/) do
   fill_in "Email", with: user.email
   fill_in "Password", with: user.new_password
   click_button I18n.t("authentication.sign_in.submit")
-  save_page
 end
