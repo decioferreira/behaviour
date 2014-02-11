@@ -22,7 +22,7 @@ Some of the advantages of this approach are:
 
 Add this line to your application's Gemfile:
 
-    gem 'behaviour', :group => :development
+    gem 'behaviour', group: :development
 
 And then execute:
 

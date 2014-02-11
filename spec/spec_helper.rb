@@ -1,2 +1,2 @@
-require 'rails/all'
-require 'ammeter/init'
+require "rails/all"
+require "ammeter/init"
