@@ -7,7 +7,7 @@ end
 
 When(/^I ask for a password reset$/) do
   visit "/reset_password"
-  fill_in "Email", with: user.email
+  fill_in I18n.t("authentication.ask_reset_password_email.email"), with: user.email
   click_button I18n.t("authentication.ask_reset_password_email.submit")
 end
 
@@ -32,8 +32,8 @@ When(/^I follow the reset password link$/) do
 end
 
 When(/^I submit a valid new password$/) do
-  fill_in "Password", with: user.new_password
-  fill_in "Confirm password", with: user.new_password
+  fill_in I18n.t("authentication.reset_password.password"), with: user.new_password
+  fill_in I18n.t("authentication.reset_password.confirm_password"), with: user.new_password
   click_button I18n.t("authentication.reset_password.submit")
 end
 
@@ -60,8 +60,8 @@ end
 
 When(/^I sign in with valid user data$/) do
   visit "/sign_in"
-  fill_in "Email", with: user.email
-  fill_in "Password", with: user.password
+  fill_in I18n.t("authentication.sign_in.email"), with: user.email
+  fill_in I18n.t("authentication.sign_in.password"), with: user.password
   click_button I18n.t("authentication.sign_in.submit")
 end
 
@@ -71,8 +71,8 @@ end
 
 When(/^I try to sign in with an unregistered email$/) do
   visit "/sign_in"
-  fill_in "Email", with: "unregistered@email.com"
-  fill_in "Password", with: user.password
+  fill_in I18n.t("authentication.sign_in.email"), with: "unregistered@email.com"
+  fill_in I18n.t("authentication.sign_in.password"), with: user.password
   click_button I18n.t("authentication.sign_in.submit")
 end
 
@@ -86,8 +86,8 @@ end
 
 When(/^I try to sign in with a wrong password$/) do
   visit "/sign_in"
-  fill_in "Email", with: user.email
-  fill_in "Password", with: "wrong_password"
+  fill_in I18n.t("authentication.sign_in.email"), with: user.email
+  fill_in I18n.t("authentication.sign_in.password"), with: "wrong_password"
   click_button I18n.t("authentication.sign_in.submit")
 end
 
@@ -125,9 +125,9 @@ end
 
 When(/^I sign up with valid user data$/) do
   visit "/sign_up"
-  fill_in "Email", with: user.email
-  fill_in "Password", with: user.password
-  fill_in "Confirm password", with: user.password
+  fill_in I18n.t("authentication.sign_up.email"), with: user.email
+  fill_in I18n.t("authentication.sign_up.password"), with: user.password
+  fill_in I18n.t("authentication.sign_up.confirm_password"), with: user.password
   click_button I18n.t("authentication.sign_up.submit")
 end
 
@@ -153,9 +153,9 @@ end
 
 When(/^I update my password$/) do
   visit "/account/edit"
-  fill_in "Password", with: user.new_password
-  fill_in "Confirm password", with: user.new_password
-  fill_in "Current password", with: user.password
+  fill_in I18n.t("authentication.update_account.password"), with: user.new_password
+  fill_in I18n.t("authentication.update_account.confirm_password"), with: user.new_password
+  fill_in I18n.t("authentication.update_account.current_password"), with: user.password
   click_button I18n.t("authentication.update_account.submit")
 end
 
@@ -165,9 +165,9 @@ end
 
 When(/^I try to update my password without the current password$/) do
   visit "/account/edit"
-  fill_in "Password", with: user.new_password
-  fill_in "Confirm password", with: user.new_password
-  fill_in "Current password", with: ""
+  fill_in I18n.t("authentication.update_account.password"), with: user.new_password
+  fill_in I18n.t("authentication.update_account.confirm_password"), with: user.new_password
+  fill_in I18n.t("authentication.update_account.current_password"), with: ""
   click_button I18n.t("authentication.update_account.submit")
 end
 
@@ -177,7 +177,7 @@ end
 
 When(/^I sign in with the new password$/) do
   visit "/sign_in"
-  fill_in "Email", with: user.email
-  fill_in "Password", with: user.new_password
+  fill_in I18n.t("authentication.sign_up.email"), with: user.email
+  fill_in I18n.t("authentication.sign_up.password"), with: user.new_password
   click_button I18n.t("authentication.sign_in.submit")
 end
