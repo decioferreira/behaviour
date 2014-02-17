@@ -15,7 +15,7 @@ module Behaviour
       end
 
       def generate_user_model
-        generate "model", "user email:string password:string --no-test-framework"
+        generate "model", "user email:string password:string reset_password_token:string --no-test-framework"
         rake "db:migrate"
       end
 

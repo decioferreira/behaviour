@@ -166,10 +166,6 @@ Then(/^I should see an already authenticated, sign out an try again message$/) d
   expect(page).to have_selector("#alert-message", text: I18n.t("authentication.alert.authenticated_sign_out_try_again"))
 end
 
-Given(/^I am signed out$/) do
-  step "I sign out"
-end
-
 Then(/^I should see an already registered message$/) do
   expect(page).to have_selector("#alert-message", text: I18n.t("authentication.alert.already_registered"))
 end

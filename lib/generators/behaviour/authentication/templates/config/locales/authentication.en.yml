@@ -7,13 +7,15 @@ en:
       current_password_required: "Current password required."
       invalid_email: "Invalid email."
       invalid_password: "Invalid password."
+      invalid_reset_password_token: "Invalid reset password token."
+      no_reset_password_token: "No reset password token."
       unauthenticated_user: "Unauthenticated user."
     ask_reset_password_email:
       email: "Email"
       submit: "Send"
     email:
       reset_password:
-        subject: "Website password reset"
+        subject: "Website - password reset"
     notice:
       successfully_reset_password: "Password reset successful."
       successfully_sent_reset_password_email: "A reset password email was sent successfully."

@@ -1,4 +1,5 @@
 <%= form_tag reset_password_edit_path, method: "patch" do %>
+  <%= hidden_field_tag :token, params[:token] %>
   <%= label_tag :password %>
   <%= text_field_tag :password %>
   <%= label_tag :confirm_password %>

@@ -13,7 +13,6 @@ Feature: Sign up
 
   Scenario: Already registered
     Given I am a registered user
-    And I am signed out
     When I sign up with valid user data
     Then I should see an already registered message
     And I should be signed out
