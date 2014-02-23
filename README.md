@@ -1,5 +1,7 @@
 # Behaviour (alpha version)
 
+[![Build Status](https://travis-ci.org/decioferreira/behaviour.png?branch=master)](https://travis-ci.org/decioferreira/behaviour)
+
 Behaviour generates the tests you need, to implement new features from scratch on your application.
 
 Currently, there is only one feature available: user authentication.
