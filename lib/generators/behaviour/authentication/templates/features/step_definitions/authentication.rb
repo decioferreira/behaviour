@@ -162,7 +162,7 @@ When(/^I access the sign up page$/) do
   visit "/sign_up"
 end
 
-Then(/^I should see an already authenticated, sign out an try again message$/) do
+Then(/^I should see an already authenticated, sign out and try again message$/) do
   expect(page).to have_selector("#alert-message", text: I18n.t("authentication.alert.authenticated_sign_out_try_again"))
 end
 

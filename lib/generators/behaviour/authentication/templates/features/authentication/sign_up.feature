@@ -9,7 +9,7 @@ Feature: Sign up
     Given I am signed in
     When I access the sign up page
     Then I should be redirected to the homepage
-    And I should see an already authenticated, sign out an try again message
+    And I should see an already authenticated, sign out and try again message
 
   Scenario: Already registered
     Given I am a registered user
