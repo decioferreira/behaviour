@@ -50,7 +50,7 @@ When(/^I access a page with restricted access$/) do
   visit restricted_access_path
 end
 
-Then(/^I should be redirected to the sign in page$/) do
+Then(/^I should (?:stay on|be redirected to) the sign in page$/) do
   expect(current_path).to eq("/sign_in")
 end
 
@@ -112,7 +112,6 @@ end
 Then(/^I should be redirected to the homepage$/) do
   expect(current_path).to eq("/")
 end
-
 
 Then(/^I should see an already authenticated message$/) do
   expect(page).to have_alert_message(t.authentication.alert.already_authenticated)

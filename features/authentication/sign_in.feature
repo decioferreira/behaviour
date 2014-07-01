@@ -12,13 +12,15 @@ Feature: Sign in
 
   Scenario: Unregistered email
     When I try to sign in with an unregistered email
-    Then I should see an invalid email message
+    Then I should stay on the sign in page
+    And I should see an invalid email message
     And I should be signed out
 
   Scenario: Wrong password
     Given I am a registered user
     When I try to sign in with a wrong password
-    Then I should see an invalid password message
+    Then I should stay on the sign in page
+    And I should see an invalid password message
     And I should be signed out
 
   Scenario: Already authenticated

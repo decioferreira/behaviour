@@ -106,7 +106,7 @@ post '/sign_in' do
     flash[:alert] = 'Invalid password.'
   end
 
-  redirect '/'
+  erb :sign_in
 end
 
 get '/sign_up' do
