@@ -9,6 +9,8 @@ gem 'sequel'
 gem 'sqlite3'
 
 group :test do
+  gem 'rake'
+
   gem 'cucumber'
   gem 'capybara'
   gem 'rspec'
