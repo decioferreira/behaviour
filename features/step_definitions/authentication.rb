@@ -160,6 +160,22 @@ Then(/^I should see a successful sign up message$/) do
   expect(page).to have_notice_message(t.authentication.notice.successfully_signed_up)
 end
 
+When(/^I sign up with passwords that don't match$/) do
+  visit "/sign_up"
+  fill_in t.authentication.sign_up.email, with: user.email
+  fill_in t.authentication.sign_up.password, with: user.password
+  fill_in t.authentication.sign_up.confirm_password, with: "password_not_matching"
+  click_button t.authentication.sign_up.submit
+end
+
+Then(/^I should stay on the sign up page$/) do
+  expect(current_path).to eq("/sign_up")
+end
+
+Then(/^I should see a passwords don't match message$/) do
+  expect(page).to have_alert_message(t.authentication.alert.passwords_dont_match)
+end
+
 When(/^I access the sign up page$/) do
   visit "/sign_up"
 end

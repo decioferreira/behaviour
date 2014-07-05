@@ -5,6 +5,12 @@ Feature: Sign up
     And I should see a successful sign up message
     And I should be signed in
 
+  Scenario: Passwords don't match
+    When I sign up with passwords that don't match
+    Then I should stay on the sign up page
+    And I should see a passwords don't match message
+    And I should be signed out
+
   Scenario: Already authenticated
     Given I am signed in
     When I access the sign up page

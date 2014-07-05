@@ -119,7 +119,10 @@ get '/sign_up' do
 end
 
 post '/sign_up' do
-  if Persistency.instance.find_user(params[:email], params[:password])
+  if params[:password] != params[:confirm_password]
+    flash[:alert] = "The passwords don't match. Try again?"
+    erb :sign_up
+  elsif Persistency.instance.find_user(params[:email], params[:password])
     flash[:alert] = 'Already registered.'
     redirect '/'
   else
@@ -217,7 +220,7 @@ __END__
   <label for="password">Password</label>
   <input type="password" id="password" name="password">
   <label for="confirm_password">Confirm password</label>
-  <input type="password" id="confirm_password">
+  <input type="password" id="confirm_password" name="confirm_password">
 
   <button>Sign up</button>
 </form>
