@@ -8,6 +8,7 @@ Feature: Sign up
   Scenario: Passwords don't match
     When I sign up with passwords that don't match
     Then I should stay on the sign up page
+    And I should see the email field with the submitted email
     And I should see a passwords don't match message
     And I should be signed out
 

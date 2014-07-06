@@ -120,6 +120,8 @@ end
 
 post '/sign_up' do
   if params[:password] != params[:confirm_password]
+    @email = params[:email]
+
     flash[:alert] = "The passwords don't match. Try again?"
     erb :sign_up
   elsif Persistency.instance.find_user(params[:email], params[:password])
@@ -216,7 +218,7 @@ __END__
 
 <form method="post" action="/sign_up">
   <label for="email">Email</label>
-  <input type="text" id="email" name="email">
+  <input type="text" id="email" name="email" value="<%= @email %>">
   <label for="password">Password</label>
   <input type="password" id="password" name="password">
   <label for="confirm_password">Confirm password</label>

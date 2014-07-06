@@ -160,6 +160,10 @@ Then(/^I should see a successful sign up message$/) do
   expect(page).to have_notice_message(t.authentication.notice.successfully_signed_up)
 end
 
+Then(/^I should see the email field with the submitted email$/) do
+  expect(find_field(t.authentication.sign_up.email).value).to eq(user.email)
+end
+
 When(/^I sign up with passwords that don't match$/) do
   visit "/sign_up"
   fill_in t.authentication.sign_up.email, with: user.email
