@@ -1,10 +1,13 @@
 require 'rubygems'
 require 'cucumber'
 require 'cucumber/rake/task'
+require 'rspec/core/rake_task'
 
 Cucumber::Rake::Task.new(:features) do |t|
   t.cucumber_opts = "features --format pretty"
 end
 
-task test: :features
+RSpec::Core::RakeTask.new(:spec)
+
+task test: [:spec, :features]
 task default: :test
