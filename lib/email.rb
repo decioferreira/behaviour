@@ -4,6 +4,8 @@ class Email
   end
 
   def valid?
-    @email != "Abc.example.com"
+    return false if @email.count("@") != 1
+    return false if @email.count("\"") > 0
+    true
   end
 end
